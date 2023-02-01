@@ -12,11 +12,13 @@
   ],
   "scripts": {
     "analyze": "size-limit --why",
-    "build": "dts build",
+    "build:esm": "dts build --entry src/index.ts --format esm --name index.js --rollupTypes",
+    "start:esm": "dts watch --entry src/index.ts --format esm --name index.js --rollupTypes",
+    "build": "dts build --rollupTypes",
+    "start": "dts watch --rollupTypes",
     "lint": "dts lint",
     "prepare": "dts build",
     "size": "size-limit",
-    "start": "dts watch",
     "test": "dts test"
   },
   "husky": {
@@ -25,7 +27,7 @@
     }
   },
   "prettier": {
-    "printWidth": 80,
+    "printWidth": 120,
     "semi": true,
     "singleQuote": true,
     "trailingComma": "es5"
@@ -33,7 +35,9 @@
   "jest": {
     "testEnvironment": "node"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "axios": "^1.2.6"
+  },
   "engines": {
     "node": ">=12"
   },
@@ -46,5 +50,16 @@
       "path": "dist/superrequest.esm.js",
       "limit": "10 KB"
     }
-  ]
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^8.1.2",
+    "@tsconfig/recommended": "^1.0.2",
+    "@types/axios": "^0.14.0",
+    "axios": "^1.2.6",
+    "dts-cli": "^1.6.3",
+    "husky": "^8.0.3",
+    "size-limit": "^8.1.2",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.4"
+  }
 }

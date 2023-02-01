@@ -1,6 +1,6 @@
-export const sum = (a: number, b: number) => {
-  if ('development' === process.env.NODE_ENV) {
-    console.log('dev only output');
-  }
-  return a + b;
-};
+import { SuperRequest } from './superrequest';
+
+const superrequest = new SuperRequest();
+
+export default superrequest;
+export { SuperRequest };
